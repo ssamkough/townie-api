@@ -3,18 +3,26 @@
   "version": "1.0.0",
   "description": "API for Townie.",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "knex": "^0.21.0",
+    "pg": "^8.0.3",
     "validator": "^13.0.0"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "nodemon": "^2.0.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "lint": "npx eslint *.js utils/*.js services/**/*.js database/*.js controllers/**/*.js",
+    "lint-fix": "npx eslint --fix *.js utils/*.js services/**/*.js database/*.js controllers/**/*.js"
   },
   "repository": {
     "type": "git",
