@@ -19,10 +19,10 @@ module.exports = (router) => {
 
   // news post 
   router.post('/newspost', newspostController.GetNewspost);
+  router.post('/createNewspost', newspostController.CreateNewspost);
 };
 
 // Routes
-// - POST newsposts: title, tagline, text, tags
 // - Get Town tag, newsposts_tag, newsposts
 // - Change password, old password, and new password, user_id PUT
 // - Delete account

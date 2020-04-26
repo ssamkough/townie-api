@@ -4739,3 +4739,5 @@ insert into users(user_role, town_id, gender, username, email, password, first_n
 insert into discussion_post(user_id, town_id, title, content, view_count, comment_count, created_at, updated_at) values (4, 2, 'Welcome to nothing', 'there is no content yet', 3, 4, now(), now());
 
 insert into discussion_comment(discussion_post_id, user_id, content, created_at, updated_at) values (3, 1, 'this post sucks', now(), now());
+
+insert into newspost(user_id, town_id, title, content, created_at, updated_at) values (1, 2, 'this is a title', 'this is the content', now(), now());  
