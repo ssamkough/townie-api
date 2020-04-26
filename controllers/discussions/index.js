@@ -1,4 +1,4 @@
-const discussionService = require('../../services/discussions/discussionService');
+const discussionService = require('../../services/discussions');
 
 module.exports = {
   GetDiscussionPosts: (req, res) => {

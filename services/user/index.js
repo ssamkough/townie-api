@@ -36,4 +36,7 @@ module.exports = {
       .then((user) => resolve(user))
       .catch((err) => reject(new Error(err)));
   }),
+  GetZipCode: (zipcode) => new Promise((resolve, reject) => db.select('*').from('zip_codes').where('zip', '=', zipcode)
+    .then((data) => resolve(data[0]))
+    .catch((err) => reject(new Error(err)))),
 };
