@@ -34,13 +34,25 @@ module.exports = {
 
     const errors = ValidateRegister(user_role, zipcode, gender, username, email, password, firstName, lastName, birthday, address);
     if (Object.keys(errors).length !== 0) {
-      return res.status(200).send({ errors });
+      return res.status(400).send({ errors });
     }
 
     const hash = bcrypt.hashSync(password, 10);
 
     return userService.RegisterUser(user_role, zipcode, gender, username, email, hash, firstName, lastName, birthday, address)
-      .then((user) => res.status(200).send(user))
+      .then((user) => {
+        return userService.GetZipCode(zipcode)
+          .then((data) => {
+            const response = {
+                ...user[0],
+                state: data.state_name,
+                city: data.city,
+                zipcode,
+              };
+
+              return res.status(200).send(response);
+            })
+          })
       .catch((err) => res.status(400).send(err.message));
   },
   GetZipCode: (req, res) => {
