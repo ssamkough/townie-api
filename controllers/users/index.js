@@ -21,7 +21,7 @@ module.exports = {
   Register: (req, res) => {
     const {
       user_role,
-      town_id,
+      zipcode,
       gender,
       username,
       email,
@@ -32,14 +32,14 @@ module.exports = {
       address,
     } = req.body;
 
-    const errors = ValidateRegister(user_role, town_id, gender, username, email, password, firstName, lastName, birthday, address);
+    const errors = ValidateRegister(user_role, zipcode, gender, username, email, password, firstName, lastName, birthday, address);
     if (Object.keys(errors).length !== 0) {
       return res.status(200).send({ errors });
     }
 
     const hash = bcrypt.hashSync(password, 10);
 
-    return userService.RegisterUser(user_role, town_id, gender, username, email, hash, firstName, lastName, birthday, address)
+    return userService.RegisterUser(user_role, zipcode, gender, username, email, hash, firstName, lastName, birthday, address)
       .then((user) => res.status(200).send(user))
       .catch((err) => res.status(400).send(err.message));
   },

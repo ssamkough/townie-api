@@ -48,15 +48,6 @@ CREATE TABLE IF NOT EXISTS "newspost_tag"
  CONSTRAINT "PK_newspost_tag" PRIMARY KEY ( "id" )
 );
 
-CREATE TABLE IF NOT EXISTS "states"
-(
- "id"         serial NOT NULL,
- "name"       varchar(50) NOT NULL,
- "created_at" timestamp NOT NULL,
- "updated_at" timestamp NOT NULL,
- CONSTRAINT "PK_states" PRIMARY KEY ( "id" )
-);
-
 CREATE TABLE IF NOT EXISTS "tags"
 (
  "id"         serial NOT NULL,
@@ -78,7 +69,6 @@ CREATE TABLE IF NOT EXISTS "town_tags"
 CREATE TABLE IF NOT EXISTS "towns"
 (
  "id"         serial NOT NULL,
- "state_id"   int NOT NULL,
  "name"       varchar(50) NOT NULL,
  "zip_code"   int NOT NULL,
  "created_at" timestamp NOT NULL,
@@ -100,9 +90,9 @@ CREATE TABLE IF NOT EXISTS "users"
 (
  "id"             serial NOT NULL,
  "user_role"      int NOT NULL,
- "town_id"        int NOT NULL,
+ "zipcode"        int NOT NULL,
  "gender"         varchar(50) NOT NULL,
- "username"				varchar(50) NOT NULL,
+ "username"				varchar(50) UNIQUE NOT NULL,
  "email"          varchar(50) NOT NULL,
  "password"       varchar(255) NOT NULL,
  "first_name"     varchar(50) NOT NULL,
@@ -4729,12 +4719,12 @@ INSERT INTO zip_codes(zip,lat,lng,city,state_id,state_name,zcta,parent_zcta,popu
 INSERT INTO zip_codes(zip,lat,lng,city,state_id,state_name,zcta,parent_zcta,population,density,county_fips,county_name,county_weights,county_names_all,county_fips_all,imprecise,military,timezone) VALUES (15464,39.92446,-79.43666,'Mill Run','PA','Pennsylvania','TRUE',NULL,1669,12.9,42051,'Fayette','{''42051'':100}','Fayette','42051','FALSE','FALSE','America/New_York');
 
 
-insert into users(user_role, town_id, gender, username, email, password, first_name, last_name, date_of_birth, address, created_at, updated_at) values (
-    1, 2, 'male', 'aglaswala', 'aglasswala@gmail.com', 'dilly', 'dil', 'asldkfj', NOW(), '123 river rd', NOW(), NOW());
+insert into users(user_role, zipcode, gender, username, email, password, first_name, last_name, date_of_birth, address, created_at, updated_at) values (
+    1, 07603, 'male', 'aglaswala', 'aglasswala@gmail.com', 'dilly', 'dil', 'asldkfj', NOW(), '123 river rd', NOW(), NOW());
 
 
-insert into users(user_role, town_id, gender, username, email, password, first_name, last_name, date_of_birth, address, created_at, updated_at) values (
-    1, 2, 'male', 'aglaswala', 'aglasswala@gmail.com', 'dilly', 'dil', 'asldkfj', NOW(), '123 river rd', NOW(), NOW());
+insert into users(user_role, zipcode, gender, username, email, password, first_name, last_name, date_of_birth, address, created_at, updated_at) values (
+    1, 07603, 'male', 'aglsaswala', 'aglasswala@gmail.com', 'dilly', 'dil', 'asldkfj', NOW(), '123 river rd', NOW(), NOW());
 
 insert into discussion_post(user_id, town_id, title, content, view_count, comment_count, created_at, updated_at) values (4, 2, 'Welcome to nothing', 'there is no content yet', 3, 4, now(), now());
 

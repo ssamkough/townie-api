@@ -17,10 +17,10 @@ module.exports = {
     })
       .catch((err) => reject(err));
   }),
-  RegisterUser: (user_role, town_id, gender, username, email, password, firstName, lastName, birthday, address) => new Promise((resolve, reject) => {
+  RegisterUser: (user_role, zipcode, gender, username, email, password, firstName, lastName, birthday, address) => new Promise((resolve, reject) => {
     db('users').insert({
       user_role,
-      town_id,
+      zipcode,
       gender,
       username,
       email,
